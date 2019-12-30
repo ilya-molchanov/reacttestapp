@@ -7,7 +7,7 @@ export default class TodoList extends Component {
 
   constructor(props) {
     super(props);
-    this.onDeleteClick = this.onDeleteClick.bind(this);
+    
     
     this.state = {
       delete: false
@@ -21,7 +21,7 @@ export default class TodoList extends Component {
 
   render() {
 
-    const { todos } = this.props;
+    const { todos, onDeleted } = this.props;
 
     const elements = todos.map((item) => {
       const { id, ...itemProps } = item;
@@ -30,7 +30,7 @@ export default class TodoList extends Component {
         <li key={id} className="list-group-item">
           <TodoListItem
           {...itemProps }
-          onDeleted={ this.onDeleteClick }
+          onDeleted={ () => onDeleted(id) }
           />
         </li>
       );
